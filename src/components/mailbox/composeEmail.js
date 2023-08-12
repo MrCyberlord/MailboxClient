@@ -11,6 +11,9 @@ import Form from "react-bootstrap/Form";
 
 import axios from "axios";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const ComposeEmail = () => {
   const [to, setTo] = useState("");
   const [subject, setSubject] = useState("");
@@ -53,11 +56,12 @@ const ComposeEmail = () => {
     setTo("");
     setSubject("");
     setEditorState(EditorState.createEmpty());
-    window.alert("Your Email was Sent!");
+    toast.success("Your Email was sent");
   };
 
   return (
     <div style={{ padding: "1rem" }}>
+      <ToastContainer />
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <h2>Compose Email</h2>
         <a href="/welcome">

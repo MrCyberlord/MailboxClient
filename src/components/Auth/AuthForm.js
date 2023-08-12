@@ -1,9 +1,11 @@
 import { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
-import classes from "./AuthForm.module.css";
 import { useHistory } from "react-router-dom";
+
 import { authActions } from "../redux-store/authSlice";
-import store from "../redux-store/index";
+import store from "../redux-store/store";
+
+import classes from "./AuthForm.module.css";
 
 const AuthForm = () => {
   const history = useHistory();
@@ -38,6 +40,7 @@ const AuthForm = () => {
     }
 
     let url;
+
     if (isLogin) {
       url =
         "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDkoRg6yLJuB6DOtUkXdGlhK11ZyjV3jCM";

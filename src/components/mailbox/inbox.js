@@ -109,7 +109,8 @@ const Inbox = () => {
       });
     }
   };
-  const handleDeleteClick = (mailId) => {
+  const handleDeleteClick = (event, mailId) => {
+    event.stopPropagation();
     const receivedMail = receivedMails.find((mail) => mail.id === mailId);
     const sentMail = sentMails.find((mail) => mail.id === mailId);
     if (receivedMail) {
@@ -149,7 +150,11 @@ const Inbox = () => {
             <Badge variant="secondary" className="mr-4">
               Read:{readCount}
             </Badge>
-            <Badge variant="info" className="ml-4">
+            <Badge
+              variant="info"
+              className="ml-4"
+              style={{ marginLeft: "1rem" }}
+            >
               Unread: {receivedMails.length - readCount}{" "}
             </Badge>
           </div>
@@ -187,7 +192,7 @@ const Inbox = () => {
                   <td>
                     <Button
                       variant="danger"
-                      onClick={() => handleDeleteClick(mail.id)}
+                      onClick={(event) => handleDeleteClick(event, mail.id)}
                     >
                       Delete Mail
                     </Button>
@@ -226,7 +231,7 @@ const Inbox = () => {
                   <td>
                     <Button
                       variant="danger"
-                      onClick={() => handleDeleteClick(mail.id)}
+                      onClick={(event) => handleDeleteClick(event, mail.id)}
                     >
                       Delete Mail
                     </Button>

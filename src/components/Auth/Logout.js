@@ -13,5 +13,9 @@ export default function Logout() {
     history.replace("/");
   };
 
-  return <Button onClick={logoutHandler}>Logout</Button>;
+  return (
+    <Button style={{ marginRight: "1rem" }} onClick={logoutHandler}>
+      Logout
+    </Button>
+  );
 }

@@ -1,0 +1,35 @@
+.mainLayout {
+    display: flex;
+    width: 100%;
+    height: calc(100vh - headerHeight); 
+    overflow: hidden; 
+    
+  }
+  
+  .sidebar {
+    flex: 0 0 20%;
+    padding: 1rem;
+    border-right: 1px solid #e1e1e1;
+    height: 80vh; 
+    background-color: #645d5d;
+  }
+  
+  .content {
+    flex: 1;
+    padding: 1rem;
+  }
+  
+  .navLink {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #007BFF;
+    text-decoration: none;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .navLink:hover {
+    background-color: #f5f5f5;
+  }
+  

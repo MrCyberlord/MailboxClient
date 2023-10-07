@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { authActions } from "../redux-store/authSlice";
 import store from "../redux-store/store";
@@ -8,7 +8,7 @@ import store from "../redux-store/store";
 import classes from "./AuthForm.module.css";
 
 const AuthForm = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
   const confirmPasswordInputRef = useRef();
@@ -86,7 +86,7 @@ const AuthForm = () => {
         );
         console.log("State:", store.getState());
         if (isLogin) {
-          history.replace("/welcome");
+          navigate("/welcome");
         }
       })
       .catch((err) => {

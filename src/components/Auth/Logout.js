@@ -1,21 +1,21 @@
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { authActions } from "../redux-store/authSlice";
-import Button from "react-bootstrap/Button";
+import styles from "./Logout.module.css";
 
 export default function Logout() {
   const dispatch = useDispatch();
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const logoutHandler = () => {
     dispatch(authActions.logout());
-    history.replace("/");
+    navigate("/");
   };
 
   return (
-    <Button style={{ marginRight: "1rem" }} onClick={logoutHandler}>
+    <span className={styles.logoutButton} onClick={logoutHandler}>
       Logout
-    </Button>
+    </span>
   );
 }

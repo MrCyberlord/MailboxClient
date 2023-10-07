@@ -3,16 +3,13 @@ import { useSelector } from "react-redux";
 import { Editor } from "react-draft-wysiwyg";
 import { EditorState, convertToRaw } from "draft-js";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
 
 import axios from "axios";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+import styles from "./ComposeEmail.module.css";
 
 const ComposeEmail = () => {
   const [to, setTo] = useState("");
@@ -60,42 +57,44 @@ const ComposeEmail = () => {
   };
 
   return (
-    <div style={{ padding: "1rem" }}>
+    <div className={styles.container}>
       <ToastContainer />
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
+      <div className={styles.header}>
         <h2>Compose Email</h2>
-        <a href="/welcome">
-          <Button>Back to homepage</Button>
-        </a>
       </div>
-      <Form onSubmit={handleSubmit} style={{ padding: "1rem" }}>
-        <Form.Group controlId="to">
-          <Form.Label>To:</Form.Label>
-          <Form.Control
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <div className={styles.formGroup}>
+          <label htmlFor="to">To:</label>
+          <input
             type="email"
+            id="to"
             placeholder="Enter email"
             value={to}
             onChange={(e) => setTo(e.target.value)}
             required
           />
-        </Form.Group>
-        <Form.Group controlId="subject">
-          <Form.Label style={{ marginTop: "1rem" }}>Subject:</Form.Label>
-          <Form.Control
+        </div>
+        <div className={styles.formGroup}>
+          <label htmlFor="subject" className={styles.topMargin}>
+            Subject:
+          </label>
+          <input
             type="text"
+            id="subject"
             placeholder="Enter subject"
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
             required
           />
-        </Form.Group>
-
-        <Form.Group controlId="body">
-          <Row>
-            <Col>
-              <Form.Label style={{ marginTop: "1rem" }}>Body:</Form.Label>
-            </Col>
-            <Col xs={12}>
+        </div>
+        <div className={styles.formGroup}>
+          <div className={styles.row}>
+            <div className={styles.col}>
+              <label htmlFor="body" className={styles.topMargin}>
+                Body:
+              </label>
+            </div>
+            <div className={`${styles.col} ${styles.fullWidth}`}>
               <Editor
                 editorState={editorState}
                 onEditorStateChange={(state) => setEditorState(state)}
@@ -149,16 +148,17 @@ const ComposeEmail = () => {
                   },
                 }}
               />
-            </Col>
-          </Row>
-        </Form.Group>
-
-        <Button variant="primary" type="submit" style={{ marginTop: "1rem" }}>
+            </div>
+          </div>
+        </div>
+        <button
+          type="submit"
+          className={`${styles.button} ${styles.topMargin}`}
+        >
           Send
-        </Button>
-      </Form>
+        </button>
+      </form>
     </div>
   );
 };
-
 export default ComposeEmail;

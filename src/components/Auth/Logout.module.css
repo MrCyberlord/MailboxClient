@@ -1,0 +1,14 @@
+.logoutButton {
+    background-color: transparent;
+    border: none;
+    color: blue; 
+    cursor: pointer;
+    font-size: 16px;
+    outline: none;
+    transition: color 0.3s ease;
+  }
+  
+  .logoutButton:hover {
+    color: darkblue;
+  }
+  

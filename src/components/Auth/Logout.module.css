@@ -3,7 +3,7 @@
     border: none;
     color: blue; 
     cursor: pointer;
-    font-size: 16px;
+    font-size: 2rem;
     outline: none;
     transition: color 0.3s ease;
   }

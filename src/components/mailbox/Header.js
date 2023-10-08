@@ -10,8 +10,8 @@ const Header = () => {
         padding: "1rem",
       }}
     >
-      <h2>QuickMailer</h2>
-      <span>Logged in as: {email}</span>
+      <h1 style={{ color: "#8b228b" }}>QuickMailer</h1>
+      <span style={{ fontSize: "1.2rem" }}>Logged in as: {email}</span>
     </div>
   );
 };
